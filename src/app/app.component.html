@@ -1,0 +1,39 @@
+<div class="body">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">SL NO</th>
+        <th scope="col">Name</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students; let i = index">
+        <th scope="row">{{ student.id }}</th>
+        <td>{{ student.name }}</td>
+        <td>{{ student.subject }}</td>
+        <td>
+          <select id="" [(ngModel)]="student.subject" (change)="selectedSubject($event)">
+            <option disabled [attr.selected]="true"  [ngValue]="null">
+              Choose Subject
+            </option>
+            <!-- ng-container is now needed because there can only be 1 structural directive per element -->
+            <!-- <ng-container *ngFor="let Subject of subjects; let x = index">
+              <option
+                *ngIf="Subject.name !== student.subject"
+                value="{{ Subject.name }}"
+              >
+                {{ Subject.name }}
+              </option>
+            </ng-container> -->
+            <option *ngFor="let Subject of subjects" value="{{ Subject.name }}"
+              [attr.data-hidden]="Subject.name === student.subject">
+              {{ Subject.name }}
+            </option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

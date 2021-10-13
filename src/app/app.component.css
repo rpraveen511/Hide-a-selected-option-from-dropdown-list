@@ -1,0 +1,6 @@
+.body {
+  margin: 50px !important;
+}
+[data-hidden='true'] {
+  display: none !important;
+}
