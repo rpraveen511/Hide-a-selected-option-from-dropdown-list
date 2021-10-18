@@ -1,4 +1,5 @@
 <div class="body">
+  <h3>Hiding an Option in Dropdown List</h3>
   <table class="table">
     <thead>
       <tr>
@@ -12,10 +13,12 @@
       <tr *ngFor="let student of students; let i = index">
         <th scope="row">{{ student.id }}</th>
         <td>{{ student.name }}</td>
-        <td>{{ student.subject }}</td>
+        <td *ngIf="student.subject">{{ student.subject }}</td>
+        <td *ngIf="!student.subject">------</td>
+
         <td>
           <select id="" [(ngModel)]="student.subject" (change)="selectedSubject($event)">
-            <option disabled [attr.selected]="true"  [ngValue]="null">
+            <option disabled selected="selected"  value="">
               Choose Subject
             </option>
             <!-- ng-container is now needed because there can only be 1 structural directive per element -->
